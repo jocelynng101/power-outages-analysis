@@ -43,8 +43,8 @@ In this section, we are going to observe the distribution of the Cause Category 
 
 <iframe
   src="assets/CauseCategoryHisto_plot.html"
-  width="1600"
-  height="1200"
+  width="800"
+  height="600"
   frameborder="0"
 ></iframe>
 
