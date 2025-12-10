@@ -64,13 +64,23 @@ Shown below is the empirical distribution of the TVDs.
 
 **Alternate hypothesis**: The distribution of `TOTAL.PRICE` is different when `CUSTOMERS.AFFECTED` are missing vs not missing.
 
-[Insert Plot]
+<iframe
+  src="assets/TPBoxplot_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Through performing this permutation test, we noticed that the observed statistic is: 0.118 and the p-value is: 0.4778. Since the p-value is much greater than the significance value we previously defined, we fail to reject the null hypothesis, indicating that the distribution of the `TOTAL.PRICE` is the same when `CUSTOMERS.AFFECTED` are missing vs not missing. We note that this seems to be a Missing Completely at Random (MCAR) situation. Specifically, the likelihood of an outage report missing from the `CUSTOMERS.AFFECTED` column is consistent whether an outage occurs at various energy prices.
 
 Shown below is the empirical distribution of the Absolute Difference of Means.
 
-[Insert Plot]
+<iframe
+  src="assets/TPEmpDis_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 # Hypothesis Testing
 
