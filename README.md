@@ -44,7 +44,7 @@ In this section, we are going to observe the distribution of the Cause Category 
 <iframe
   src="assets/CCHist_plot.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
