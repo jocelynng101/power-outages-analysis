@@ -10,7 +10,7 @@ Power Outage Analyzanator is a detailed UCSD data science project made to serve 
 The overarching mission of this project is to pinpoint the characteristics of major power outages with higher severity as well as idenify the risk factors an energy company may consider looking into when predicting the location and severity of its next major power outage.
 
 ## Introduction of Columns
-The initial raw DataFrame consists of 1,534 observations and 57 variables, where each row represents a single power outage.
+The initial raw DataFrame consists of 1,534 observations and 57 variables, where each row represents a single power outage. For the sake of our analysis, we will be...
 
 | Column | Description |
 | ----------- | ----------- |
