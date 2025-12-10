@@ -41,7 +41,12 @@ In this section, we are going to observe the distribution of the Cause Category 
 
 **Alternate hypothesis**: The distribution of `CAUSE.CATEGORY` is different when `CUSTOMERS.AFFECTED` are missing vs not missing.
 
-[Insert plots]
+<iframe
+  src="assets/CauseCategoryHisto_plot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Through performing this permutation test, we noticed that the observed statistic is: 0.557 and the p-value is: 0.0. Since the p-value is less than the significance value we previously defined, we reject the null hypothesis, indicating that the distribution of the `CAUSE.CATEGORY` is different when `CUSTOMERS.AFFECTED` are missing vs not missing. We note that this seems to be a Missing at Random (MAR) situation. For example, the outages caused by "severe weather" might be reported differently than those caused by "intentional attacks."
 
