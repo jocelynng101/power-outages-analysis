@@ -56,7 +56,7 @@ The initial raw DataFrame consists of 1,534 observations and 57 variables, where
 <iframe
   src="assets/hierarchy_of_causes.html"
   width="800"
-  height="500"
+  height="700"
   frameborder="0"
 ></iframe>
 
