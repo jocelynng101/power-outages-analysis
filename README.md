@@ -54,6 +54,13 @@ The initial raw DataFrame consists of 1,534 observations and 57 variables, where
 ## Univariate Analysis
 
 <iframe
+  src="assets/NLogDist.html"
+  width="800"
+  height="800"
+  frameborder="0"
+></iframe>
+
+<iframe
   src="assets/hierarchy_of_causes.html"
   width="800"
   height="800"
