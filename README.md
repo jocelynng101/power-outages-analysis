@@ -10,7 +10,7 @@ By: Jocelyn Ng & Holden Flett
 [Insert research question and polish this section]
 
 ## Introduction of Columns
-The initial raw DataFrame consists of 1,534 observations and 57 variables, where each row represents a single power outage. For the sake of our analysis, we will be...
+The initial raw DataFrame consists of 1,534 observations and 57 variables, where each row represents a single power outage. For the sake of our analysis, we will be focusing on the columns listed below.
 
 |           Column          |                                                  Description                                                  |
 |:-------------------------:|:-------------------------------------------------------------------------------------------------------------:|
@@ -124,3 +124,12 @@ Shown below is the empirical distribution of the Absolute Difference of Means.
 
 # Fairness Analysis
 
+# References
+[1] Sayanti Mukherjee, Roshanak Nateghi, Makarand Hastak,
+Data on major power outage events in the continental U.S.,
+Data in Brief,
+Volume 19,
+2018,
+Pages 2079-2083,
+ISSN 2352-3409,
+https://doi.org/10.1016/j.dib.2018.06.067.
