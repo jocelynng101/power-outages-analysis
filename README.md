@@ -220,23 +220,43 @@ All of these features were speculated to impact the outage duration and we wante
 This original model turned out terribly, offering a horrific, 0.0172 R<sup>2</sup> value, even after 5-fold validation. The MSE was also large sitting at 26807090.204, but since we do not have a number to reference it with, it’s mostly an irrelevant figure at this stage. We conclude that the current baseline model is poor because it yielded a negligible R<sup>2</sup> value of 0.0172, indicating that the selected features fail to explain almost any of the variability in outage duration.
 
 # Final Model
-To improve the model, we switched the target to the log of outage duration.
-We systematically dropped individual columns to assess their contribution to R^2.
-We identified that losing the cause category caused the biggest drop in R^2, indicating it was the most significant.
-The rest did not appear nearly as significant which prompted us to look for further explanatory columns
+We took several steps to identify our best final model, which ultimately ended up being extremely simple. 
 
-We then went through and systematically computed correlation R^2 values for every single column in the dataframe
-to find other features to add to the model to predict DUR.LOG
+Our first step was to begin by predicting `DUR.LOG` instead of the default duration due to its skewed distribution. This immediately increased our test R<sup>2</sup> of our model to approximately 0.42, a huge jump. From there, we began removing one feature at a time and evaluating our models the same way. Unsurprisingly, many features, when dropped, improved the model. 
 
-After analyzing each column systematically for correlation with DUR.LOG, U.S. state was the only other feature
-with an R^2 above 0.2 (about 0.22). This combined model with CAUSE.CATEGORY and U.S._STATE gives:
-Train R^2: 0.507, Test R^2: 0.426, CV Mean R^2: 0.453
+In fact, each feature improved the test R2 except for `CAUSE.CATEGORY`, which plummeted our R<sup>2</sup> back down to 0.165. Realizing that most of our features were just simply noise, we decided to search for other features. 
 
-This begs the question, did we even need U.S. state? As it turns out the answer was no!
-Simply using cause-category as a predictor was the strongest predictor of the logged duration
-This model is less likely to overfit and turned out to be the strongest; the simplest model is the best.
-Train R^2: 0.4416923618233445 Train MSE: 4.09747935754667
+The next step involved the undertaking of evaluating every single feature in the dataframe and computing the best R<sup>2</sup> for a simple linear model to predict `DUR.LOG`. Numerical data was processed normally, all categorical data was one-hot encoded. Each model was tested with 5-fold cross validation and their R<sup>2</sup> values computed. 
 
+In the end, only `U.S._STATE` surpassed an arbitrary 0.200 R<sup>2</sup> threshold. The combined model using one-hot encoded U.S. states and the cause categories ended up producing a model performing as such: 
+
+1) Test R<sup>2</sup>: 0.4257727056986099 
+2) Test MSE: 4.068471711183825 (Note this is MSE for DUR.LOG so it will be orders of magnitudes less than the first model).
+
+Seeing as this was strikingly similar to the original models, we then removed the state column. Surprisingly, this produced a very slightly lower MSE and a slightly higher R<sup>2</sup>, indicating that the state produced unnecessary complexity:
+
+1) Test R<sup>2</sup>: 0.42789363608701747 
+2) Test MSE: 4.053444655917976
+
+Seeing as our best model was one-hot encoded, there was no room for polynomial improvements. As such, our best model to predict the natural log of outage duration, was simply the cause of the outage. 
+
+Our coefficients were:
+
+|   |            Feature            |  Coef |
+|:-:|:-----------------------------:|:-----:|
+| 0 |             Equipment Failure | -0.29 |
+| 1 |         Fuel Supply Emergency |  2.49 |
+| 2 |            Intentional Attack | -2.39 |
+| 3 |                     Islanding | -1.63 |
+| 4 |                 Public Appeal |  0.65 |
+| 5 |                Severe Weather |  1.69 |
+| 6 | System Operability Disruption | -0.50 |
+
+with an intercept of 5.724210460175625. 
+
+Notably, our model has very few parameters and features. This was after an exhaustive search but it did prove to be the best predictive model while avoiding overfitting. This makes sense because the cause of the event intuitively links to the recovery of the power. 
+
+For example, a simple downed line or small case of vandalism would likely take less time than an environment-wide hazard. This is reflected in the coefficients. The easiest way to understand why this model is superior to the baseline model is the increased R<sup>2</sup>, showing strong correlation with the actual values as opposed to the near randomness of the first one.
 
 # Fairness Analysis
 Permutation test to compare model performance across two NERC regions (RFC vs WECC)
