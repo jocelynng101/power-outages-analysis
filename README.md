@@ -84,7 +84,7 @@ This bar chart shows how often power outages happen in different climate regions
 <iframe
   src="assets/outage_scatterplot.html"
   width="800"
-  height="500"
+  height="300"
   frameborder="0"
 ></iframe>
 The Outage Duration versus Customers Affected scatter plot shows a large cluster near the origin with no strong correlation. This suggests that most outages are brief and affect a small number of customers. Unexpectedly, the trend in the outliers, highlights that the longest outages usually impact fewer people, while widespread outages affecting millions tend to be shorter.
