@@ -82,6 +82,14 @@ This bar chart shows how often power outages happen in different climate regions
 ## Bivariate Analysis
 
 <iframe
+  src="assets/outage_scatterplot.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+The Outage Duration versus Customers Affected scatter plot shows a large cluster near the origin with no strong correlation. This suggests that most outages are brief and affect a small number of customers. Unexpectedly, the trend in the outliers, highlights that the longest outages usually impact fewer people, while widespread outages affecting millions tend to be shorter.
+
+<iframe
   src="assets/UniHeatmap.html"
   width="1000"
   height="600"
@@ -89,6 +97,7 @@ This bar chart shows how often power outages happen in different climate regions
   style="display: block; margin: 0 auto;"
 ></iframe>
 The heatmap shows the frequency of power outages throughout the seasons and years. It clearly shows more outages occurring in the summer months from June to August. This might be due to higher energy demand or seasonal weather. It also highlights a significant spike in outages around 2011, marking it as the most active period in the data compared to the quieter early 2000s.
+
 ## Interesting Aggregates
 
 # Assessment of Missingness
