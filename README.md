@@ -52,8 +52,9 @@ The initial raw DataFrame consists of 1,534 observations and 57 variables, where
 ## Data Cleaning
 
 ## Univariate Analysis
-As a part of our Exploratory Data Analysis, we first perform a univariate analysis examining the distribution of three single variables.
+As a part of our Exploratory Data Analysis, we first perform a univariate analysis examining the distribution of two single variables.
 
+We are looking to reveal patterns that are hidden by extreme values, so we opted for a natural log distribution of the Power Outage Durations.
 <iframe
   src="assets/NLogDist.html"
   width="800"
@@ -69,7 +70,8 @@ The distribution of outage durations on a logarithmic scale shows two clear peak
   frameborder="0"
 ></iframe>
 
- 
+## Bivariate Analysis
+
 <iframe
   src="assets/UniHeatmap.html"
   width="1000"
@@ -78,9 +80,6 @@ The distribution of outage durations on a logarithmic scale shows two clear peak
   style="display: block; margin: 0 auto;"
 ></iframe>
 The heatmap shows the frequency of power outages throughout the seasons and years. It clearly shows more outages occurring in the summer months from June to August. This might be due to higher energy demand or seasonal weather. It also highlights a significant spike in outages around 2011, marking it as the most active period in the data compared to the quieter early 2000s.
-
-## Bivariate Analysis
-
 ## Interesting Aggregates
 
 # Assessment of Missingness
