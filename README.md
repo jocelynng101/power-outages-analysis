@@ -217,7 +217,7 @@ The baseline model we used was a multilinear regression model using these featur
 
 All of these features were speculated to impact the outage duration and we wanted a baseline for what using each feature looked like in a simple linear model. 
 
-This original model turned out terribly, offering a horrific, 0.0172 $R^2$ value, even after 5-fold validation. The MSE was also large sitting at 26807090.204, but since we do not have a number to reference it with, it’s mostly an irrelevant figure at this stage.
+This original model turned out terribly, offering a horrific, 0.0172 R<sup>2</sup> value, even after 5-fold validation. The MSE was also large sitting at 26807090.204, but since we do not have a number to reference it with, it’s mostly an irrelevant figure at this stage.
 
 # Final Model
 To improve the model, we switched the target to the log of outage duration.
