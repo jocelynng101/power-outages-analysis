@@ -285,6 +285,8 @@ For fairness testing, we wanted to ensure that our predictive model was applicab
 We computed the MSE for each group’s predicted `DUR.LOG` based on their outage causes and then simulated 10,000 random permutations of outage causes to generate an empirical distribution for a hypothesis test. 
 
 **Null hypothesis:** MSE difference between RFC and WECC is due to chance
+<br> 
+
 **Alternative hypothesis:** The model is more accurate at predicting DUR.LOG for one group over the other. 
 
 With a p-value of 0.38 and a significance level 0.05, the permutation test did not display any particular favoring for one geographical group versus the other. Thus, we did not discover any bias in our model.
