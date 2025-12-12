@@ -52,21 +52,21 @@ The initial raw DataFrame consists of 1,534 observations and 57 variables, where
 ## Data Cleaning
 
 ## Univariate Analysis
-As a part of our Exploratory Data Analysis, we first perform a univariate analysis examining the distribution of two single variables.
+As a part of our Exploratory Data Analysis, we first perform a univariate analysis examining the distribution of three single variables.
 
 We are looking to reveal patterns that are hidden by extreme values, so we opted for a natural log distribution of the Power Outage Durations.
 <iframe
   src="assets/NLogDist.html"
   width="800"
-  height="400"
+  height="500"
   frameborder="0"
 ></iframe>
 The distribution of outage durations on a logarithmic scale shows two clear peaks. This chart displays a main cluster of long-duration events that is roughly normal, centered around a log value of 8, which is about 3,000 minutes. There is also a smaller peak of very short outages near 0. This suggests that major power outages usually fit into two categories: 1) complex infrastructure repairs where most are resolved quickly, but a few unfortunate ones take much longer, and 2) a separate group of brief but significant incidents.
- 
+
 <iframe
-  src="assets/hierarchy_of_causes.html"
+  src="assets/cause_category_plot.html"
   width="800"
-  height="800"
+  height="600"
   frameborder="0"
 ></iframe>
 
