@@ -224,18 +224,20 @@ We took several steps to identify our best final model, which ultimately ended u
 
 Our first step was to begin by predicting `DUR.LOG` instead of the default duration due to its skewed distribution. This immediately increased our test R<sup>2</sup> of our model to approximately 0.42, a huge jump. From there, we began removing one feature at a time and evaluating our models the same way. Unsurprisingly, many features, when dropped, improved the model. 
 
-In fact, each feature improved the test R2 except for `CAUSE.CATEGORY`, which plummeted our R<sup>2</sup> back down to 0.165. Realizing that most of our features were just simply noise, we decided to search for other features. 
+In fact, each feature improved the test R<sup>2</sup> except for `CAUSE.CATEGORY`, which plummeted our R<sup>2</sup> back down to 0.165. Realizing that most of our features were just simply noise, we decided to search for other features. 
 
 The next step involved the undertaking of evaluating every single feature in the dataframe and computing the best R<sup>2</sup> for a simple linear model to predict `DUR.LOG`. Numerical data was processed normally, all categorical data was one-hot encoded. Each model was tested with 5-fold cross validation and their R<sup>2</sup> values computed. 
 
 In the end, only `U.S._STATE` surpassed an arbitrary 0.200 R<sup>2</sup> threshold. The combined model using one-hot encoded U.S. states and the cause categories ended up producing a model performing as such: 
 
 1) Test R<sup>2</sup>: 0.4257727056986099 
+<br>
 2) Test MSE: 4.068471711183825 (Note this is MSE for DUR.LOG so it will be orders of magnitudes less than the first model).
 
 Seeing as this was strikingly similar to the original models, we then removed the state column. Surprisingly, this produced a very slightly lower MSE and a slightly higher R<sup>2</sup>, indicating that the state produced unnecessary complexity:
 
-1) Test R<sup>2</sup>: 0.42789363608701747 
+1) Test R<sup>2</sup>: 0.42789363608701747
+<br> 
 2) Test MSE: 4.053444655917976
 
 Seeing as our best model was one-hot encoded, there was no room for polynomial improvements. As such, our best model to predict the natural log of outage duration, was simply the cause of the outage. 
