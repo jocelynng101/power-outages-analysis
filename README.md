@@ -115,6 +115,8 @@ The heatmap shows the frequency of power outages throughout the seasons and year
 | severe weather                |          3883.99  |        188575        |     763 |
 | system operability disruption |           728.87  |        211066        |     127 |
 
+We grouped the data by `CAUSE.CATEGORY` and calculated the frequency (count) and mean severity metrics. By comparing how often an outage occurs with its actual impact, we distinguished between high-frequency risks and high-severity risks. For example, Severe Weather has the highest frequency, occurring most often. However, Fuel Supply Emergencies and System Operability Disruptions show greater impact in terms of duration and customer reach. We gathered that the most common risks are not always the ones that consume the most resources.
+
 ### Climate Region vs. Cause Category (Mean Outage Duration)
 
 | CLIMATE.REGION     |   equipment failure |   fuel supply emergency |   intentional attack |   islanding |   public appeal |   severe weather |   system operability disruption |
@@ -128,6 +130,8 @@ The heatmap shows the frequency of power outages throughout the seasons and year
 | Southwest          |             113.8   |                    76   |              265.672 |      2      |         2275    |         11572.9  |                         329.222 |
 | West               |             524.81  |                  6154.6 |              857.677 |    214.857  |         2028.11 |          2928.37 |                         363.667 |
 | West North Central |              61     |                   nan   |               23.5   |     68.2    |          439.5  |          2442.5  |                         nan     |
+
+We created a pivot table using `CLIMATE.REGION` and `CAUSE.CATEGORY` to look at the average outage duration in different environmental contexts. By comparing how specific causes occur in various climates, we found that severity often results from a mix of factors rather than being a single event. The Southwest region, when paired with Severe Weather, shows much higher "severe" statistics (averaging over 11,000 minutes) compared to the same cause in the Central region. This suggests that our model may need to consider both location and cause to effectively predict duration.
 
 # Assessment of Missingness
 
