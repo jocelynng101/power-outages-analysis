@@ -46,7 +46,7 @@ The initial raw DataFrame consists of 1,534 observations and 57 variables, where
 
 6) Additionally, we added `DUR.LOG` which is the natural log of our durations. This is because the distribution of our outage durations is right skewed and logging it normalizes the column, making it easier to eventually predict.
 
-The first few rows of this cleaned `outages` DataFrame are shown below.
+The first few rows of the cleaned `outages` DataFrame are shown below.
 
 |   YEAR |   MONTH | U.S._STATE   | NERC.REGION   | CLIMATE.REGION     |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   HURRICANE.NAMES |   OUTAGE.DURATION |   DEMAND.LOSS.MW |   CUSTOMERS.AFFECTED |   RES.PRICE |   COM.PRICE |   IND.PRICE |   TOTAL.PRICE |   RES.SALES |   COM.SALES |   IND.SALES |   TOTAL.SALES |   RES.PERCEN |   COM.PERCEN |   IND.PERCEN |   RES.CUSTOMERS |   COM.CUSTOMERS |   IND.CUSTOMERS |   TOTAL.CUSTOMERS |   RES.CUST.PCT |   COM.CUST.PCT |   IND.CUST.PCT |   PC.REALGSP.STATE |   PC.REALGSP.USA |   PC.REALGSP.REL |   PC.REALGSP.CHANGE |   UTIL.REALGSP |   TOTAL.REALGSP |   UTIL.CONTRI |   PI.UTIL.OFUSA |   POPULATION |   POPPCT_URBAN |   POPPCT_UC |   POPDEN_URBAN |   POPDEN_UC |   POPDEN_RURAL |   AREAPCT_URBAN |   AREAPCT_UC |   PCT_LAND |   PCT_WATER_TOT |   PCT_WATER_INLAND |   DUR.LOG | OUTAGE.START        | OUTAGE.RESTORATION   |
 |-------:|--------:|:-------------|:--------------|:-------------------|----------------:|:-------------------|:-------------------|:------------------------|------------------:|------------------:|-----------------:|---------------------:|------------:|------------:|------------:|--------------:|------------:|------------:|------------:|--------------:|-------------:|-------------:|-------------:|----------------:|----------------:|----------------:|------------------:|---------------:|---------------:|---------------:|-------------------:|-----------------:|-----------------:|--------------------:|---------------:|----------------:|--------------:|----------------:|-------------:|---------------:|------------:|---------------:|------------:|---------------:|----------------:|-------------:|-----------:|----------------:|-------------------:|----------:|:--------------------|:---------------------|
@@ -213,7 +213,13 @@ Beyond that, all of East North Central's pairs had the greatest differences amon
 Since our dataset is a set of descriptive qualities of power outages as well as their impact, we thought it best to predict the impact of a given outage from the circumstances around it. For impact, we decided to target duration, since it is a useful quality that, when predicted, can inform victims on how long to expect an outage to last. The problem then becomes, what's the best prediction model for the duration of an outage?
 
 # Baseline Model
-Our baseline regression model predicts outage duration using all of the `outages` dataframe features. We evaluate with train/test split and 5-fold cross-validation. This model performs poorly, capturing very little variance in the target. Our metrics include: Train R^2=0.256, Test R^2=0.017, Train MSE≈27,836,705, Test MSE≈26,807,090, CV Mean R^2=0.147
+Our baseline regression model predicts outage duration using all of the `outages` dataframe features. We evaluate with train/test split and 5-fold cross-validation. This model performs poorly, capturing very little variance in the target. Our metrics include: Train R^2^=0.256, Test R^2^=0.017, Train MSE≈27,836,705, Test MSE≈26,807,090, CV Mean R^2^=0.147
+
+The baseline model we used was a multilinear regression model using these features: `CAUSE.CATEGORY`, `CLIMATE.REGION`, `CLIMATE.CATEGORY`, `ANOMALY.LEVEL` ,`MONTH`, `YEAR`, `RES.CUSTOMERS`, `COM.CUSTOMERS`, and `IND.CUSTOMERS` to predict our `OUTAGE.DURATION` column. The first five columns are categorical, which we one-hot encoded, and the remaining were simply regressed numerically (including year). 
+
+All of these features were speculated to impact the outage duration and we wanted a baseline for what using each feature looked like in a simple linear model. 
+
+This original model turned out terribly, offering a horrific, 0.0172 R^2^ value, even after 5-fold validation. The MSE was also large sitting at 26807090.204, but since we do not have a number to reference it with, it’s mostly an irrelevant figure at this stage.
 
 # Final Model
 To improve the model, we switched the target to the log of outage duration.
