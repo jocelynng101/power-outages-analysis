@@ -213,7 +213,7 @@ Beyond that, all of East North Central's pairs had the greatest differences amon
 Since our dataset is a set of descriptive qualities of power outages as well as their impact, we thought it best to predict the impact of a given outage from the circumstances around it. For impact, we decided to target duration, since it is a useful quality that, when predicted, can inform victims on how long to expect an outage to last. The problem then becomes, what's the best prediction model for the duration of an outage?
 
 # Baseline Model
-The baseline model we used was a multilinear regression model using these features: `CAUSE.CATEGORY`, `CLIMATE.REGION`, `CLIMATE.CATEGORY`, `ANOMALY.LEVEL` ,`MONTH`, `YEAR`, `RES.CUSTOMERS`, `COM.CUSTOMERS`, and `IND.CUSTOMERS` to predict our `OUTAGE.DURATION` column. The first five columns are categorical, which we one-hot encoded, and the remaining were simply regressed numerically (including year). 
+The baseline model we used was a multilinear regression model using these features: `CAUSE.CATEGORY`(nominal), `CLIMATE.REGION`(nominal), `CLIMATE.CATEGORY`(nominal), `ANOMALY.LEVEL`(ordinal),`MONTH`(ordinal), `YEAR`(quantitative), `RES.CUSTOMERS`(quantitative), `COM.CUSTOMERS`(quantitative), and `IND.CUSTOMERS`(quantitative) to predict our `OUTAGE.DURATION`(quantitative) column. The first five columns are categorical, which we one-hot encoded, and the remaining were simply quantitative, regressed numerically (including year). 
 
 All of these features were speculated to impact the outage duration and we wanted a baseline for what using each feature looked like in a simple linear model. 
 
