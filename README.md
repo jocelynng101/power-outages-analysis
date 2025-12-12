@@ -90,7 +90,6 @@ In this bivariate analysis, we observed the relationship between both outage dur
   frameborder="0"
 ></iframe>
 The outage duration versus customers affected scatter plot shows a large cluster near the origin with no strong correlation. This suggests that most outages are brief and affect a small number of customers. Unexpectedly, the trend in the outliers, highlights that the longest outages usually impact fewer people, while widespread outages affecting millions tend to be shorter.
-
 <br>
 
 <iframe
