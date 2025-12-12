@@ -73,7 +73,7 @@ As a part of our Exploratory Data Analysis, we first perform a univariate analys
 <iframe
   src="assets/UniHeatmap.html"
   width="1000"
-  height="800"
+  height="500"
   frameborder="0"
   style="display: block; margin: 0 auto;"
 ></iframe>
