@@ -69,6 +69,7 @@ The distribution of outage durations on a logarithmic scale shows two clear peak
   height="600"
   frameborder="0"
 ></iframe>
+This bar chart shows how often power outages happen by cause. Severe weather stands out as the main reason, with nearly 800 incidents, which is almost double the number for the second highest category, intentional attacks. The data shows a sharp downward trend indicating  that while environmental conditions are the main cause of outages, other operational and technical issues happen much less often.
 
 <iframe
   src="assets/climate_region_plot.html"
@@ -76,6 +77,7 @@ The distribution of outage durations on a logarithmic scale shows two clear peak
   height="600"
   frameborder="0"
 ></iframe>
+This bar chart shows how often power outages happen in different climate regions. We can observe that the Northeast has the highest number of outages, around 350. The data indicates a clear drop in outage numbers from the busy Northeast and South regions down to the West North Central region, which reports the fewest outages. This trend suggests that the weather patterns and atmospheric conditions in the Northeast and South regions are much more likely to cause power disruptions than those in the West North Central or Southwest.
 
 ## Bivariate Analysis
 
@@ -148,6 +150,16 @@ Shown below is the empirical distribution of the Absolute Difference of Means.
 ></iframe>
 
 # Hypothesis Testing
+We decided to highlight the two regions that share the greatest power outage duration difference with a p value < 0.05. The columns of importance are ...
+
+**Null Hypothesis:** On average, East North Central and Southwest equal median durations and power outages do not vary with respect to those regions.
+
+**Alternative Hypothesis:** On average, power outages East North Central are longer than those from the Southwest.
+
+Originally, this was 'East North Central' and 'West North Central'
+Once we took a look at the value counts list of the regions, we discovered that 'East North Central' region only had 15 power outages in the cleaned dataset
+
+Beyond that, all of East North Central's pairs had the greatest differences among pairs. Wary of drawing conclusions from minimal data, we elected to avoid using those pairs.
 
 # Framing a Prediction Problem
 
