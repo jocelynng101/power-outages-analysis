@@ -93,7 +93,7 @@ The outage duration versus customers affected scatter plot shows a large cluster
 
 <iframe
   src="assets/UniHeatmap.html"
-  width="1000"
+  width="800"
   height="600"
   frameborder="0"
   style="display: block; margin: 0 auto;"
